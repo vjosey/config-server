@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: zuul
+
+server:
+  port: 9999
+
+#
+zuul:
+  routes:
+   movies:
+      #url: http://localhost:8080/
+      # if no discovery, we have to know where app are running
+      path: /movie
+      service-id: movies # line up with spring.application
+      strip-prefix: true # default is true. Remove what zuul.routes.movies.path says from Url
+      # /movies/api/v1.0 -> /api/v1.0
